@@ -1,0 +1,55 @@
+name: ChooseMode
+version: '1.3.0'
+main: ru.mr_hares.chooseMode.ChooseMode
+api-version: '1.21'
+authors: [ mr_hares ]
+
+commands:
+  choosemode:
+    aliases: [cm]
+    permission: choosemode.admin.change;choosemode.admin.reload;choosemode.admin.stats;
+  mode:
+    permission: default
+
+permissions:
+  choosemode.*:
+    description: "Все разрешения плагина"
+    default: op
+    children:
+      - choosemode.admin.*
+      - choosemode.bypass.*
+
+  choosemode.admin.*:
+    description: "Все админские разрешения плагина"
+    default: op
+    children:
+      - choosemode.admin.change
+      - choosemode.admin.stats
+      - choosemode.admin.reload
+
+  choosemode.bypass.*:
+    description: "Все права на игнорирование ограничений"
+    default: op
+    children:
+      - choosemode.bypass.cooldown
+      - choosemode.bypass.combat
+
+  choosemode.admin.change:
+    description: "Разрешение на изменение режима игрока"
+    default: op
+
+  choosemode.admin.reload:
+    description: "Разрешение на перезагрузку конфигурации"
+    default: op
+
+  choosemode.admin.stats:
+    description: "Разрешение на просмотр сводки режимов"
+    default: op
+
+  choosemode.bypass.cooldown:
+    description: "Игнорирует задержку между сменами режима"
+    default: op
+
+  choosemode.bypass.combat:
+    description: "Позволяет менять режим во время PVP-боя"
+    default: op

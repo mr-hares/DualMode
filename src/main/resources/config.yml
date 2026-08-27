@@ -1,0 +1,36 @@
+# Время, через которое можно повторно сменить режим (В днях)
+choose-time: 3
+
+# Формирование времени
+time:
+  days: "д." # Дни
+  hours: "ч." # Часы
+  minutes: "мин." # Минуты
+  seconds: "сек." # Секунды
+
+# Переменные PlaceholderAPI
+placeholder:
+  # %choosemode_status%
+  status:
+    pve: "&aPVE"
+    pvp: "&cPVP"
+
+# Кастомизация окна выбора режима
+menu:
+  settings:
+    title: "&5Выбор режима" # Заголовок окна
+
+  icons:
+    pve:
+      material: "SHIELD"
+      slot: 11
+      enchant-glow: true
+    pvp:
+      material: "DIAMOND_SWORD"
+      slot: 15
+      enchant-glow: true
+
+# Оповещение о выборе режима игроков
+announce:
+  enabled: true
+  message: "{prefix}&e{player} &fпереключился в режим {mode}"
