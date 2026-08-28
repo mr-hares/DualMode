@@ -1,13 +1,14 @@
-prefix: "&#df73ff(ChooseMode) &r"
+prefix: "#ffb433(DualMode) &r"
 
 help:
   commands:
     - "&f"
-    - " &#df73ff/choosemode (/cm) reload &7- &fОбновить настройки плагина"
-    - " &#df73ff/choosemode (/cm) change &7- &fИзменить игровой режим игрока"
+    - " #ffb433/dualmode (/dm) reload &7- &fОбновить настройки плагина"
+    - " #ffb433/dualmode (/dm) change &7- &fИзменить игровой режим игрока"
+    - " #ffb433/dualmode (/dm) stats &7- &fПосмотреть сводку по режимам"
     - "&f"
 
-  use-change: "{prefix}Пример: &#df73ff/choosemode (/cm) change <игрок> <PVP/PVE>"
+  use-change: "{prefix}Пример: #ffb433/dualmode (/dm) change <игрок> <PVP/PVE>"
 
 menu:
   choose:
@@ -19,7 +20,7 @@ menu:
         - " &fТвой путь — строить, творить"
         - " &fи наслаждаться спокойной игрой."
         - ""
-        - " &#df73ffКлючевая особенность"
+        - " #ffb433Ключевая особенность"
         - "  &7- &fДругие игроки не могут нанести тебе урон"
         - "&f"
 
@@ -30,14 +31,14 @@ menu:
         - " &fТы всегда в центре событий."
         - " &fТвои боевые навыки — твоя сила."
         - ""
-        - " &#df73ffКлючевая особенность"
+        - " #ffb433Ключевая особенность"
         - "  &7- &fТы можешь атаковать любого игрока"
         - "    &8Кроме тех, кто в режиме PVE"
 
 reload: "{prefix}Конфигурация успешно перезагружена"
 only-player: "{prefix}Эта команда доступна только игрокам"
 not-permission: "{prefix}У тебя нет прав на выполнение этой команды"
-waiting-cooldown: "{prefix}Смена режима пока недоступна. Жди &#df73ff{time}"
+waiting-cooldown: "{prefix}Смена режима пока недоступна. Жди #ffb433{time}"
 in-combat: "{prefix}В бою нельзя менять режим"
 
 choose-mode:
@@ -59,11 +60,11 @@ warnings:
 change:
   not-found-player: "{prefix}Игрок с таким ником не найден"
 
-  message: "{prefix}Ты перевёл игрока &#df73ff{player} &fв режим {mode}"
-  player-notify: "{prefix}Админ &#df73ff{player} &fизменил твой режим на {mode}"
+  message: "{prefix}Ты перевёл игрока #ffb433{player} &fв режим {mode}"
+  player-notify: "{prefix}Админ #ffb433{player} &fизменил твой режим на {mode}"
 
 stats:
   - "{prefix}Сводка по режимам"
-  - "&fВсего выборов: &6{total}"
-  - "&fPVE-режим: &a{pve}"
-  - "&fPVP-режим: &c{pvp}"
+  - "  &fВсего выборов: #ffb433{total}"
+  - "  &fPVE-режим: &a{pve}"
+  - "  &fPVP-режим: &c{pvp}"

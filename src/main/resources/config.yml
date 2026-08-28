@@ -1,5 +1,5 @@
 # Время, через которое можно повторно сменить режим (В днях)
-choose-time: 3
+choice-time: 3
 
 # Формирование времени
 time:
@@ -10,7 +10,7 @@ time:
 
 # Переменные PlaceholderAPI
 placeholder:
-  # %choosemode_status%
+  # %dualmode_mode%
   status:
     pve: "&aPVE"
     pvp: "&cPVP"
@@ -33,4 +33,6 @@ menu:
 # Оповещение о выборе режима игроков
 announce:
   enabled: true
-  message: "{prefix}&e{player} &fпереключился в режим {mode}"
+
+  first-message: "{prefix}&e{player} &fвыбрал режим {mode}"
+  message: "{prefix}&e{player} &fпереключился на режим {mode}"

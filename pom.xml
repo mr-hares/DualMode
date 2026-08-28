@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.mr_hares</groupId>
-    <artifactId>ChooseMode</artifactId>
-    <version>1.3.0</version>
+    <artifactId>DualMode</artifactId>
+    <version>1.0-alpha</version>
     <packaging>jar</packaging>
 
-    <name>ChooseMode</name>
+    <name>DualMode</name>
 
     <properties>
         <java.version>21</java.version>

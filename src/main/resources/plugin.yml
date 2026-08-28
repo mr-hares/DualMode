@@ -1,55 +1,56 @@
-name: ChooseMode
-version: '1.3.0'
-main: ru.mr_hares.chooseMode.ChooseMode
+name: DualMode
+version: '1.0-alpha'
+main: ru.mr_hares.dualmode.DualMode
 api-version: '1.21'
 authors: [ mr_hares ]
+folia-supported: true
 
 commands:
-  choosemode:
-    aliases: [cm]
-    permission: choosemode.admin.change;choosemode.admin.reload;choosemode.admin.stats;
+  dualmode:
+    aliases: [dm]
+    permission: dualmode.admin.change;dualmode.admin.reload;dualmode.admin.stats;
   mode:
     permission: default
 
 permissions:
-  choosemode.*:
+  dualmode.*:
     description: "Все разрешения плагина"
     default: op
     children:
-      - choosemode.admin.*
-      - choosemode.bypass.*
+      - dualmode.admin.*
+      - dualmode.bypass.*
 
-  choosemode.admin.*:
+  dualmode.admin.*:
     description: "Все админские разрешения плагина"
     default: op
     children:
-      - choosemode.admin.change
-      - choosemode.admin.stats
-      - choosemode.admin.reload
+      - dualmode.admin.change
+      - dualmode.admin.stats
+      - dualmode.admin.reload
 
-  choosemode.bypass.*:
+  dualmode.bypass.*:
     description: "Все права на игнорирование ограничений"
     default: op
     children:
-      - choosemode.bypass.cooldown
-      - choosemode.bypass.combat
+      - dualmode.bypass.cooldown
+      - dualmode.bypass.combat
 
-  choosemode.admin.change:
+  dualmode.admin.change:
     description: "Разрешение на изменение режима игрока"
     default: op
 
-  choosemode.admin.reload:
+  dualmode.admin.reload:
     description: "Разрешение на перезагрузку конфигурации"
     default: op
 
-  choosemode.admin.stats:
-    description: "Разрешение на просмотр сводки режимов"
+  dualmode.admin.stats:
+    description: "Разрешение на просмотр сводки по режимам"
     default: op
 
-  choosemode.bypass.cooldown:
+  dualmode.bypass.cooldown:
     description: "Игнорирует задержку между сменами режима"
     default: op
 
-  choosemode.bypass.combat:
+  dualmode.bypass.combat:
     description: "Позволяет менять режим во время PVP-боя"
     default: op
