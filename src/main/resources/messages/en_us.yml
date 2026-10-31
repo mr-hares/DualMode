@@ -1,0 +1,70 @@
+prefix: "#ffb433(DualMode) &r"
+
+help:
+  commands:
+    - "{prefix}List of available commands:"
+    - " #ffb433/dualmode reload &7- &freload plugin settings"
+    - " #ffb433/dualmode change &7- &fchange a player's game mode"
+    - " #ffb433/dualmode stats &7- &fview mode summary"
+    - "&f"
+
+  use-change: "{prefix}Example: #ffb433/dualmode change <player> <PVP/PVE>"
+
+menu:
+  choose:
+    pve:
+      name: "&aPVE Mode"
+      lore:
+        - "&f"
+        - " &fYou don't like fights and chaos."
+        - " &fYour path is to build, create"
+        - " &fand enjoy a peaceful game."
+        - ""
+        - " #ffb433Key feature"
+        - "  &7- &fOther players cannot deal damage to you"
+        - "&f"
+
+    pvp:
+      name: "&cPVP Mode"
+      lore:
+        - "&f"
+        - " &fYou're always in the center of events."
+        - " &fYour combat skills are your strength."
+        - ""
+        - " #ffb433Key feature"
+        - "  &7- &fYou can attack any player"
+        - "    &8Except those in PVE mode"
+
+reload: "{prefix}Configuration successfully reloaded"
+only-player: "{prefix}This command is only available to players"
+not-permission: "{prefix}You don't have permission to execute this command"
+waiting-cooldown: "{prefix}Mode change is not available yet. Wait #ffb433{time}"
+in-combat: "{prefix}You cannot change mode while in combat"
+
+choose-mode:
+  message: "{prefix}You have activated {mode} mode"
+
+  pvp:
+    title: "&cPVP Mode"
+    subtitle: "&7Show what you're capable of in combat"
+
+  pve:
+    title: "&aPVE Mode"
+    subtitle: "&7Build, survive and socialize without unnecessary fights"
+
+warnings:
+  actionbar:
+    for-pve: "&cYou cannot attack other players"
+    for-pvp: "&cPlayers in PVE mode are invulnerable to you"
+
+change:
+  not-found-player: "{prefix}Player with that name was not found"
+
+  message: "{prefix}You have switched player #ffb433{player} &fto {mode} mode"
+  player-notify: "{prefix}Admin #ffb433{player} &fhas changed your mode to {mode}"
+
+stats:
+  - "{prefix}Mode summary"
+  - "  &fTotal selections: #ffb433{total}"
+  - "  &fPVE mode: &a{pve}"
+  - "  &fPVP mode: &c{pvp}"

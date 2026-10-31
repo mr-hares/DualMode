@@ -9,6 +9,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import ru.mr_hares.dualmode.DualMode;
 import ru.mr_hares.dualmode.menu.ChooseMenu;
 import ru.mr_hares.dualmode.menu.ConfirmMenu;
+import ru.mr_hares.dualmode.utils.ColorUtil;
 
 import static ru.mr_hares.dualmode.DualMode.*;
 
@@ -53,7 +54,7 @@ public class InventoryClick implements Listener {
 
                 if (getInstance().getConfig().getBoolean("announce.enabled", true)) {
                     for (Player p:
-                            Bukkit.getOnlinePlayers()) if (((Player) event.getWhoClicked()).getPlayer() != p) p.sendMessage(colorize(
+                            Bukkit.getOnlinePlayers()) if (((Player) event.getWhoClicked()).getPlayer() != p) p.sendMessage(ColorUtil.colorize(
                             getInstance().getConfig().getString("announce.first-message")
                                     .replace("{player}", event.getWhoClicked().getName())
                                     .replace("{mode}", getInstance().getConfig().getString("placeholder.status." + mode))
@@ -64,7 +65,7 @@ public class InventoryClick implements Listener {
 
                 if (getInstance().getConfig().getBoolean("announce.enabled", true)) {
                     for (Player p:
-                            Bukkit.getOnlinePlayers()) if (((Player) event.getWhoClicked()).getPlayer() != p) p.sendMessage(colorize(
+                            Bukkit.getOnlinePlayers()) if (((Player) event.getWhoClicked()).getPlayer() != p) p.sendMessage(ColorUtil.colorize(
                             getInstance().getConfig().getString("announce.message")
                                     .replace("{player}", event.getWhoClicked().getName())
                                     .replace("{mode}", getInstance().getConfig().getString("placeholder.status." + mode))
@@ -77,11 +78,11 @@ public class InventoryClick implements Listener {
                     getInstance().getConfig().getString("placeholder.status." + mode));
 
             ((Player) event.getWhoClicked()).sendTitle(
-                    colorize(getMessages().getString("choose-mode." + mode + ".title")),
-                    colorize(getMessages().getString("choose-mode." + mode + ".subtitle"))
+                    ColorUtil.colorize(getMessages().getString("choose-mode." + mode + ".title")),
+                    ColorUtil.colorize(getMessages().getString("choose-mode." + mode + ".subtitle"))
             );
 
-            event.getWhoClicked().sendMessage(colorize(message));
+            event.getWhoClicked().sendMessage(ColorUtil.colorize(message));
         }
     }
 }

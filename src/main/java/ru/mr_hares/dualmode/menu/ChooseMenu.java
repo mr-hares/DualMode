@@ -13,6 +13,7 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 import ru.mr_hares.dualmode.DualMode;
+import ru.mr_hares.dualmode.utils.ColorUtil;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class ChooseMenu implements InventoryHolder {
     private Inventory inventory;
 
     public ChooseMenu() {
-        inventory = Bukkit.createInventory(this, 27, colorize(getInstance().getConfig().getString("menu.settings.title", "&5" +
+        inventory = Bukkit.createInventory(this, 27, ColorUtil.colorize(getInstance().getConfig().getString("menu.settings.title", "&5" +
                 "Выбор режима")));
 
         ItemStack PVE = getOptionItem("pve");
@@ -44,9 +45,9 @@ public class ChooseMenu implements InventoryHolder {
         ItemStack item = new ItemStack(Material.valueOf(getInstance().getConfig().getString("menu.icons." + mode + ".material", mode.equals("pve") ? "SHIELD" : "DIAMOND_SWORD")));
         ItemMeta meta = item.getItemMeta();
 
-        meta.setDisplayName(colorize(getMessages().getString("menu.choose." + mode + ".name")));
+        meta.setDisplayName(ColorUtil.colorize(getMessages().getString("menu.choose." + mode + ".name")));
         List<String> lore =
-                getMessages().getYAML().getStringList("menu.choose." + mode + ".lore").stream().map(DualMode::colorize).toList();
+                getMessages().getStringList("menu.choose." + mode + ".lore").stream().map(ColorUtil::colorize).toList();
         meta.setLore(lore);
 
         if (getInstance().getConfig().getBoolean("menu.icons." + mode + ".enchant-glow", true)) {

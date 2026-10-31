@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import ru.mr_hares.dualmode.utils.ColorUtil;
 
 import static ru.mr_hares.dualmode.DualMode.*;
 
@@ -35,11 +36,11 @@ public class PlayerDamage implements Listener {
 
         if (dr_status.equals("pve")) {
             ((Player) damager).spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                    new TextComponent(colorize(getMessages().getString("warnings.actionbar.for-pve"))));
+                    new TextComponent(ColorUtil.colorize(getMessages().getString("warnings.actionbar.for-pve"))));
             event.setCancelled(true);
         } else if (dd_status.equals("pve")) {
             ((Player) damager).spigot().sendMessage(ChatMessageType.ACTION_BAR,
-                    new TextComponent(colorize(getMessages().getString("warnings.actionbar.for-pvp"))));
+                    new TextComponent(ColorUtil.colorize(getMessages().getString("warnings.actionbar.for-pvp"))));
             event.setCancelled(true);
         }
     }

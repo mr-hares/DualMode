@@ -19,14 +19,13 @@ import java.util.regex.Pattern;
 
 import ru.mr_hares.dualmode.commands.*;
 import ru.mr_hares.dualmode.listener.*;
-import ru.mr_hares.dualmode.utils.DataBase;
-import ru.mr_hares.dualmode.utils.LocaleManager;
+import ru.mr_hares.dualmode.database.DataBase;
+import ru.mr_hares.dualmode.utils.MessagesLoader;
 import ru.mr_hares.dualmode.utils.ModePlaceholder;
-import ru.mr_hares.dualmode.utils.ModrinthUpdate;
 
 public final class DualMode extends JavaPlugin {
     private static DualMode instance;
-    private static LocaleManager messages;
+    private static MessagesLoader messages;
     private static DataBase db;
     public static Cache<UUID, UUID> combat_list = CacheBuilder.newBuilder().expireAfterWrite(25, TimeUnit.SECONDS).build();
     
@@ -34,36 +33,13 @@ public final class DualMode extends JavaPlugin {
     public void onEnable() {
         instance = this;
         saveDefaultConfig();
-        messages = new LocaleManager(this);
-
-        console(colorize("\n  ██████╗ ██╗   ██╗ █████╗ ██╗     ███╗   ███╗ ██████╗ ██████╗ ███████╗\n" +
-                        "  ██╔══██╗██║   ██║██╔══██╗██║     ████╗ ████║██╔═══██╗██╔══██╗██╔════╝\n" +
-                        "  ██║  ██║██║   ██║███████║██║     ██╔████╔██║██║   ██║██║  ██║█████╗  \n" +
-                        "  ██║  ██║██║   ██║██╔══██║██║     ██║╚██╔╝██║██║   ██║██║  ██║██╔══╝  \n" +
-                        "  ██████╔╝╚██████╔╝██║  ██║███████╗██║ ╚═╝ ██║╚██████╔╝██████╔╝███████╗\n" +
-                        "  ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝\n&f&r"));
-
-        try {
-            new ModrinthUpdate("dualmode", Bukkit.getServer().getName())
-                    .checkVersion(version -> {
-                        if (version.equals("error")) {
-                            console("[!] (DualMode) Error checking the new version");
-                        } else if (getDescription().getVersion().equals(version)) {
-                            console("(DualMode) The latest supported version is used.");
-                        } else {
-                            console("[!] (DualMode) A new version " + version + " has been detected (You have " + getDescription().getVersion() + ")");
-                            console("[!] (DualMode) https://modrinth.com/project/dualmode/versions");
-                        }
-                    });
-        } catch (Exception e) {
-            console("[!] (DualMode) Error checking the new version");
-        }
+        messages = new MessagesLoader(this);
 
         try {
             db = new DataBase(this);
-            console("(DualMode) Load data from database");
+            getLogger().info("Load data from database");
         } catch (SQLException e) {
-            console("[!] (DualMode) Database loading error");
+            getLogger().severe("Database loading error");
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
@@ -76,9 +52,9 @@ public final class DualMode extends JavaPlugin {
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new ModePlaceholder(this).register();
-            console("(DualMode) Loaded integration: PlaceholderAPI");
+            getLogger().info("Loaded integration: PlaceholderAPI");
         } else {
-            console("[!] (DualMode) Not loaded integration: PlaceholderAPI");
+            getLogger().warning("Not loaded integration: PlaceholderAPI");
         }
 
         new Mode();
@@ -92,32 +68,17 @@ public final class DualMode extends JavaPlugin {
         }
 
         List<String> events = Arrays.stream(listeners).map(listener -> listener.getClass().getSimpleName()).toList();
-        console("(DualMode) Loaded events: " + String.join(", ", events));
+        getLogger().info("Loaded events: " + String.join(", ", events));
     }
 
     @Override
     public void onDisable() {
-        console(colorize("\n  ██████╗ ██╗   ██╗ █████╗ ██╗     ███╗   ███╗ ██████╗ ██████╗ ███████╗\n" +
-                        "  ██╔══██╗██║   ██║██╔══██╗██║     ████╗ ████║██╔═══██╗██╔══██╗██╔════╝\n" +
-                        "  ██║  ██║██║   ██║███████║██║     ██╔████╔██║██║   ██║██║  ██║█████╗  \n" +
-                        "  ██║  ██║██║   ██║██╔══██║██║     ██║╚██╔╝██║██║   ██║██║  ██║██╔══╝  \n" +
-                        "  ██████╔╝╚██████╔╝██║  ██║███████╗██║ ╚═╝ ██║╚██████╔╝██████╔╝███████╗\n" +
-                        "  ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝\n&f&r"));
+
     }
 
     public static DualMode getInstance() { return instance; }
-    public static LocaleManager getMessages() { return messages; }
+    public static MessagesLoader getMessages() { return messages; }
     public static DataBase getDB() { return db; }
-
-    public static String colorize(String msg) {
-        Matcher match = Pattern.compile("#[a-fA-F0-9]{6}").matcher(msg);
-        while (match.find()) {
-            String color = msg.substring(match.start(), match.end());
-            msg = msg.replace(color, String.valueOf(ChatColor.of(color)));
-            match = Pattern.compile("#[a-fA-F0-9]{6}").matcher(msg);
-        }
-        return ChatColor.translateAlternateColorCodes('&', msg);
-    }
 
     public static void console(String message) { Bukkit.getConsoleSender().sendMessage(message); }
 }

@@ -1,4 +1,4 @@
-package ru.mr_hares.dualmode.utils;
+package ru.mr_hares.dualmode.database;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;

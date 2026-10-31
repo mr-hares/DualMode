@@ -2,13 +2,13 @@ prefix: "#ffb433(DualMode) &r"
 
 help:
   commands:
-    - "&f"
-    - " #ffb433/dualmode (/dm) reload &7- &fОбновить настройки плагина"
-    - " #ffb433/dualmode (/dm) change &7- &fИзменить игровой режим игрока"
-    - " #ffb433/dualmode (/dm) stats &7- &fПосмотреть сводку по режимам"
+    - "{prefix}Список доступных команд:"
+    - " #ffb433/dualmode reload &7- &fобновить настройки плагина"
+    - " #ffb433/dualmode change &7- &fизменить игровой режим игрока"
+    - " #ffb433/dualmode stats &7- &fпосмотреть сводку по режимам"
     - "&f"
 
-  use-change: "{prefix}Пример: #ffb433/dualmode (/dm) change <игрок> <PVP/PVE>"
+  use-change: "{prefix}Пример: #ffb433/dualmode change <игрок> <PVP/PVE>"
 
 menu:
   choose:
@@ -60,8 +60,8 @@ warnings:
 change:
   not-found-player: "{prefix}Игрок с таким ником не найден"
 
-  message: "{prefix}Ты перевёл игрока #ffb433{player} &fв режим {mode}"
-  player-notify: "{prefix}Админ #ffb433{player} &fизменил твой режим на {mode}"
+  message: "{prefix}Вы перевёли игрока #ffb433{player} &fв режим {mode}"
+  player-notify: "{prefix}Админ #ffb433{player} &fизменил ваш режим на {mode}"
 
 stats:
   - "{prefix}Сводка по режимам"

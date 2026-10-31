@@ -11,6 +11,7 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 import ru.mr_hares.dualmode.DualMode;
+import ru.mr_hares.dualmode.utils.ColorUtil;
 
 import java.util.List;
 
@@ -28,10 +29,10 @@ public class ConfirmMenu implements InventoryHolder {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
 
-        meta.setDisplayName(colorize(getMessages().getString("menu.choose." + mode + ".name")));
+        meta.setDisplayName(ColorUtil.colorize(getMessages().getString("menu.choose." + mode + ".name")));
 
         List<String> PVElore =
-                getMessages().getYAML().getStringList("menu.choose." + mode + ".lore").stream().map(DualMode::colorize
+                getMessages().getStringList("menu.choose." + mode + ".lore").stream().map(ColorUtil::colorize
         ).toList();
         meta.setLore(PVElore);
 
@@ -47,7 +48,7 @@ public class ConfirmMenu implements InventoryHolder {
                 ItemStack accept = new ItemStack(Material.GREEN_STAINED_GLASS_PANE);
                 ItemMeta a_meta = accept.getItemMeta();
 
-                a_meta.setDisplayName(colorize("&aПОДТВЕРДИТЬ"));
+                a_meta.setDisplayName(ColorUtil.colorize("&aПОДТВЕРДИТЬ"));
 
                 PersistentDataContainer a_container = a_meta.getPersistentDataContainer();
                 a_container.set(MODE_TYPE, PersistentDataType.STRING, mode);
@@ -63,7 +64,7 @@ public class ConfirmMenu implements InventoryHolder {
                 ItemStack decline = new ItemStack(Material.RED_STAINED_GLASS_PANE);
                 ItemMeta d_meta = decline.getItemMeta();
 
-                d_meta.setDisplayName(colorize("&cОТКЛОНИТЬ"));
+                d_meta.setDisplayName(ColorUtil.colorize("&cОТКЛОНИТЬ"));
 
                 PersistentDataContainer d_container = d_meta.getPersistentDataContainer();
                 d_container.set(MODE_TYPE, PersistentDataType.STRING, "back");
